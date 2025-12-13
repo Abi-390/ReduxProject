@@ -2,7 +2,7 @@ import { NavLink } from "react-router";
 
 const Nav = () => {
   return (
-    <nav className="flex items-center justify-center gap-5 px-[5%] mb-10">
+    <nav className="flex items-center justify-center gap-5">
       <NavLink
         className={(e) => (e.isActive ? "text-pink-300" : "text-white")}
         to="/"
@@ -27,7 +27,12 @@ const Nav = () => {
       >
         Login
       </NavLink>
-     
+      <NavLink
+        className={(e) => (e.isActive ? "text-pink-300" : "text-white")}
+        to="/register"
+      >
+        Register
+      </NavLink>
     </nav>
   );
 };
