@@ -11,7 +11,7 @@ const Register = () => {
   return (
     <form
       onSubmit={handleSubmit(registerHandler)}
-      className="flex items-center justify-center flex-col"
+      className="flex items-center justify-center flex-col mt-5"
     >
       <input
         className="border-b-2 outline-0 mb-5"

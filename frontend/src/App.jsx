@@ -12,7 +12,7 @@ const App = () => {
     dispatch(asyncgetuser());
   }, []);
   return (
-    <div className="w-screen h-screen bg-gray-800 text-white font-thin">
+    <div className="w-screen h-screen bg-gray-800 text-white font-thin p-5">
       <Nav />
       <Mainroutes />
     </div>
