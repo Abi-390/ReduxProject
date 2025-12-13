@@ -15,24 +15,14 @@ const Nav = () => {
       >
         Products
       </NavLink>
-      <NavLink
-        className={(e) => (e.isActive ? "text-pink-300" : "text-white")}
-        to="/cart"
-      >
-        Cart
-      </NavLink>
+      
       <NavLink
         className={(e) => (e.isActive ? "text-pink-300" : "text-white")}
         to="/login"
       >
         Login
       </NavLink>
-      <NavLink
-        className={(e) => (e.isActive ? "text-pink-300" : "text-white")}
-        to="/register"
-      >
-        Register
-      </NavLink>
+     
     </nav>
   );
 };
