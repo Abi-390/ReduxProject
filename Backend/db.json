@@ -13,6 +13,13 @@
       "email": "fanny@mlbb.com",
       "password": "mlbbBangBang",
       "isAdmin": false
+    },
+    {
+      "id": "t0r0PjAazgvqNDS2PfGY_",
+      "username": "async",
+      "email": "async@gmail.com",
+      "password": "async",
+      "isAdmin": false
     }
   ],
   "products": [
