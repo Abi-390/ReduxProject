@@ -51,7 +51,7 @@ export const asyncCurrentUser = () => async (dispatch) => {
 
     const user = JSON.parse(storedUser);
     dispatch(loaduser(user));
-     console.log("User logged in (restored from localStorage):", user);
+     console.log("User logged in (restored from localStorage)🎉");
   } catch (error) {
     console.log("Corrupted user data, clearing storage");
     localStorage.removeItem("user");

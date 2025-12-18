@@ -4,11 +4,11 @@ import { useEffect } from "react";
 
 const Nav = () => {
   const user = useSelector((state) => state.user.users);
-  useEffect(() => {
+  /*useEffect(() => {
     if (user) {
       console.log(user);
     }
-  }, [user]);
+  }, [user]);*/
 
   return (
     <nav className="flex items-center justify-center gap-5">
