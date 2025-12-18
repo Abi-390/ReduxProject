@@ -16,8 +16,8 @@ const App = () => {
   return (
     <div className="w-full
   min-h-screen
-  bg-gray-800
-  text-white
+  bg-white
+  text-gray-900
   font-thin
   p-4
   sm:p-6">

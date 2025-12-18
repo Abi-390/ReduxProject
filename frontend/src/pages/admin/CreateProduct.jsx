@@ -51,7 +51,7 @@ const CreateProduct = () => {
         placeholder="Enter product description"
         {...register("description")}
       ></textarea>
-      <button className="px-4 py-2 font-thin rounded bg-gray-400 text-white font-bold mt-3">
+      <button className="px-4 py-2 font-thin rounded bg-gray-900 text-white  mt-3">
         Create Product
       </button>
     </form>
