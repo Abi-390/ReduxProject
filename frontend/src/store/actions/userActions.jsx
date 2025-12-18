@@ -1,5 +1,5 @@
 import axios from "../../api/axiosconfig";
-import { loaduser } from "../userSlice";
+import { loaduser } from "../reducers/userSlice";
 
 
 export const asyncLoginUser = (user) => async (dispatch) => {
@@ -51,6 +51,7 @@ export const asyncCurrentUser = () => async (dispatch) => {
 
     const user = JSON.parse(storedUser);
     dispatch(loaduser(user));
+     console.log("User logged in (restored from localStorage):", user);
   } catch (error) {
     console.log("Corrupted user data, clearing storage");
     localStorage.removeItem("user");
