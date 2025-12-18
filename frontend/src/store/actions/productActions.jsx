@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import axios from "../../api/axiosconfig";
 import { loadproduct } from "../reducers/productSlice";
 
@@ -15,7 +16,28 @@ export const asyncCreateProduct = (product) => async (dispatch, getState) => {
     await axios.post("/products", product);
     dispatch(asyncLoadProducts());
   } catch (error) {
-    console.log("Corrupted user data, clearing storage");
-    localStorage.removeItem("user");
+    console.log("Failed to create product",error);
+    
   }
 };
+export const asyncUpdateProduct = (id,product) => async (dispatch, getState) => {
+  try {
+    await axios.patch("/products/"+id, product);
+    dispatch(asyncLoadProducts());
+  } catch (error) {
+    console.log("Product update error",error);
+   
+  }
+};
+export const asyncDeleteProduct = (id) => async (dispatch, getState) => {
+  
+  try {
+    await axios.delete("/products/"+id);
+    dispatch(asyncLoadProducts());
+   
+  } catch (error) {
+    console.log("Product update error",error);
+   
+  }
+};
+

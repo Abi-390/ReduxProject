@@ -1,60 +1,81 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { asyncCreateProduct } from "../../store/actions/productActions";
-
 import { useDispatch } from "react-redux";
+
 const CreateProduct = () => {
   const { register, reset, handleSubmit } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const createProductHandler = (product) => {
     product.id = nanoid();
-
-    console.log("product data", product);
     dispatch(asyncCreateProduct(product));
+    reset();
     navigate("/products");
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(createProductHandler)}
-      className="flex items-center justify-center flex-col mt-5"
-    >
-      <input
-        className="border-b-2 outline-0 mb-5"
-        type="text"
-        placeholder="Enter product title"
-        {...register("title")}
-      />
-      <input
-        className="border-b-2 outline-0 mb-5"
-        type="url"
-        placeholder="Enter product image url"
-        {...register("image")}
-      />
-      <input
-        className="border-b-2 outline-0 mb-5"
-        type="text"
-        placeholder="Enter product category"
-        {...register("category")}
-      />
-      <input
-        className="border-b-2 outline-0 mb-5"
-        type="number"
-        placeholder="Enter product price"
-        {...register("price")}
-      />
-      <textarea
-        className="border-b-2 outline-0 mb-5"
-        type="text"
-        placeholder="Enter product description"
-        {...register("description")}
-      ></textarea>
-      <button className="px-4 py-2 font-thin rounded bg-gray-900 text-white  mt-3">
-        Create Product
-      </button>
-    </form>
+    <div className="min-h-screen bg-white flex items-center justify-center px-4">
+      <form
+        onSubmit={handleSubmit(createProductHandler)}
+        className="w-full max-w-lg bg-gradient-to-l from-gray-200 to-gray-100
+ border border-gray-200 rounded-lg shadow-md p-6 space-y-5"
+      >
+        <h2 className="text-2xl font-light text-gray-900 text-center">
+          Create Product
+        </h2>
+
+        
+        <input
+          className="w-full border border-gray-400 rounded px-3 py-2 text-gray-900 focus:outline-none focus:border-gray-900 transition"
+          type="text"
+          placeholder="Product title"
+          {...register("title")}
+        />
+
+        
+        <input
+          className="w-full border border-gray-400 rounded px-3 py-2 text-gray-900 focus:outline-none focus:border-gray-900 transition"
+          type="url"
+          placeholder="Image URL"
+          {...register("image")}
+        />
+
+        
+        <input
+          className="w-full border border-gray-400 rounded px-3 py-2 text-gray-900 focus:outline-none focus:border-gray-900 transition"
+          type="text"
+          placeholder="Category"
+          {...register("category")}
+        />
+
+        
+        <input
+          className="w-full border border-gray-400 rounded px-3 py-2 text-gray-900 focus:outline-none focus:border-gray-900 transition"
+          type="number"
+          placeholder="Price"
+          {...register("price")}
+        />
+
+       
+        <textarea
+          className="w-full border border-gray-400 rounded px-3 py-2 text-gray-900 focus:outline-none focus:border-gray-900 transition resize-none"
+          rows="3"
+          placeholder="Description"
+          {...register("description")}
+        ></textarea>
+
+       
+        <button
+          type="submit"
+          className="w-full bg-gray-900 text-white py-2 rounded hover:bg-gray-800 transition"
+        >
+          Create Product
+        </button>
+      </form>
+    </div>
   );
 };
 
