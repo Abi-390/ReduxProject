@@ -6,18 +6,22 @@ import Register from "../pages/Register";
 import { Routes, Route } from "react-router";
 import CreateProduct from "../pages/admin/CreateProduct";
 import ProductDetails from "../pages/admin/ProductDetails";
+import AuthWrapper from "./AuthWrapper";
+import PageNotFound from "../PageNotFound";
+
 
 const Mainroutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/products" element={<Products />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route path="/products" element={<AuthWrapper><Products /></AuthWrapper>} />
+      <Route path="/cart" element={<AuthWrapper><Cart /></AuthWrapper>} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/product/:id" element={<ProductDetails />} />
-      <Route path="/admin/create-product" element={<CreateProduct />} />
-      
+      <Route path="/product/:id" element={<AuthWrapper><ProductDetails /></AuthWrapper>} />
+      <Route path="/admin/create-product" element={<AuthWrapper><CreateProduct /></AuthWrapper>} />
+      <Route path="*" element={<PageNotFound />} />
+     
     </Routes>
   );
 };

@@ -5,10 +5,16 @@ import {
   asyncDeleteProduct,
   asyncUpdateProduct,
 } from "../../store/actions/productActions";
+import { asyncCreateCart } from "../../store/actions/cartActions";
+
+
 
 const ProductDetails = () => {
+ 
+  
   const { id } = useParams();
   const navigate = useNavigate();
+  
   const {product:{products},
     user:{users}
   } = useSelector((state) => state);
@@ -34,6 +40,10 @@ const ProductDetails = () => {
     dispatch(asyncDeleteProduct(id));
     navigate("/products");
   };
+  const addToCarthandler=(product)=>{
+    dispatch(asyncCreateCart(product));
+    navigate("/cart")
+}
 
   if (!product) return "Loading...";
 
@@ -43,7 +53,7 @@ const ProductDetails = () => {
       
       <div className="flex justify-center">
         <div className="w-full max-w-5xl bg-white rounded-lg border shadow-lg p-6 grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Image */}
+         
           <div className="flex items-center justify-center bg-white rounded-lg p-6">
             <img
               src={product.image}
@@ -52,7 +62,7 @@ const ProductDetails = () => {
             />
           </div>
 
-          {/* Info */}
+         
           <div className="flex flex-col gap-4">
             <h1 className="text-3xl font-light text-gray-900">
               {product.title}
@@ -70,7 +80,7 @@ const ProductDetails = () => {
               ${product.price}
             </p>
 
-            <button className="mt-6 w-fit px-6 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 transition">
+            <button onClick={()=>addToCarthandler(product)} className="mt-6 w-fit px-6 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 transition">
               Add to Cart
             </button>
           </div>

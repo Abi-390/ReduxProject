@@ -5,12 +5,14 @@ import Mainroutes from "./routes/Mainroutes";
 import Nav from "./components/Nav";
 import { asyncCurrentUser } from "./store/actions/userActions";
 import { asyncLoadProducts } from "./store/actions/productActions";
+import { asyncLoadCart } from "./store/actions/cartActions";
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(asyncCurrentUser());
     dispatch(asyncLoadProducts());
+    dispatch(asyncLoadCart());
   }, []);
 
   return (

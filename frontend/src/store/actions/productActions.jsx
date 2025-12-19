@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+
 import axios from "../../api/axiosconfig";
 import { loadproduct } from "../reducers/productSlice";
 

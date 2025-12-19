@@ -24,8 +24,10 @@ export const asyncLoginUser = (user) => async (dispatch) => {
     localStorage.setItem("user", JSON.stringify(res.data[0]));
     dispatch(loaduser(res.data[0]));
     console.log("User logged in");
+    return true;
   } catch (error) {
     console.log(error);
+    return false;
   }
 };
 
@@ -55,6 +57,7 @@ export const asyncCurrentUser = () => async (dispatch) => {
   } catch (error) {
     console.log("Corrupted user data, clearing storage");
     localStorage.removeItem("user");
+    
   }
 };
 

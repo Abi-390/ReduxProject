@@ -1,9 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { asyncCreateCart } from "../store/actions/cartActions";
 
 const Products = () => {
   const products = useSelector((state) => state.product.products);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const createCarthandler =(products)=>{
+    dispatch(asyncCreateCart(products));
+    navigate("/cart");
+  }
   const renderProduct = products.map((product) => {
     return (
       <div
@@ -28,7 +35,7 @@ const Products = () => {
 
         <div className="flex items-center justify-between mt-auto">
           <p className="font-semibold">${product.price}</p>
-          <button className="px-3 py-1 border border-white rounded hover:bg-white hover:text-black transition">
+          <button onClick={()=>createCarthandler(product)} className="px-3 py-1 border border-white rounded hover:bg-white hover:text-black transition">
             Add to Cart
           </button>
         </div>

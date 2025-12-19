@@ -1,17 +1,28 @@
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router";
 import { asyncLoginUser } from "../store/actions/userActions";
+import { useEffect } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
-  const loginHandler = (user) => {
-    dispatch(asyncLoginUser(user));
+  const loginHandler = async(user) => {
+    const success =await dispatch(asyncLoginUser(user));
+    if(success){
     navigate("/products");
+    }
   };
+  const loggedInUser = useSelector((state) => state.user.users);
+
+useEffect(() => {
+  if (loggedInUser) {
+    navigate("/products", { replace: true });
+  }
+}, [loggedInUser]);
+
 
   return (
     <div className="min-h-screen bg-white flex items-start justify-center px-4 pt-24">
