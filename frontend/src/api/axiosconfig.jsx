@@ -1,10 +1,7 @@
 import axios from "axios";
 
-
 const instance = axios.create({
-    baseURL : import.meta.env.PROD
-    ? "https://otaku-backend-92hv.onrender.com"
-    : "http://localhost:3000",
-})
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:3000",
+});
 
-export default instance
+export default instance;
